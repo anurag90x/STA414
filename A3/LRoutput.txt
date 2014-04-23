@@ -1,0 +1,27 @@
+
+> for ( i in 1:length(pca_vals))
++ {
++   
++   cat("Using number of components - ")
++   print (pca_vals[i])
++   eigenvec_est <- pca.vectors(trnx_est,pc .... [TRUNCATED] 
+Using number of components - [1] 10
+Log likelihood for training 
+[1] 166.6251
+Log likelihood for validation
+[1] 57.26893
+Error for prediction [1] 0.07333333
+Using number of components - [1] 20
+Log likelihood for training 
+[1] 150.6858
+Log likelihood for validation
+[1] 49.90092
+Error for prediction [1] 0.06666667
+Using number of components - [1] 40
+Log likelihood for training 
+[1] 132.2621
+Log likelihood for validation
+[1] 49.93662
+Error for prediction [1] 0.06
+
+> sink()

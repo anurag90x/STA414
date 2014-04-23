@@ -1,0 +1,1024 @@
+
+> pred_classes <- averagePrediction(testx,trainx,trainy,alpha,K,num_iters)
+Using seed value - [1] 45.07288
+
+Next iteration of EM.. 
+Without Penalty 
+[1] -34419.34
+With Penalty 
+[1] -36428.11
+Next iteration of EM.. 
+Without Penalty 
+[1] -33225.46
+With Penalty 
+[1] -35244.57
+Next iteration of EM.. 
+Without Penalty 
+[1] -29774.39
+With Penalty 
+[1] -31869.56
+Next iteration of EM.. 
+Without Penalty 
+[1] -28367.39
+With Penalty 
+[1] -30531.48
+Next iteration of EM.. 
+Without Penalty 
+[1] -28078.05
+With Penalty 
+[1] -30266.14
+Next iteration of EM.. 
+Without Penalty 
+[1] -28019.43
+With Penalty 
+[1] -30213.5
+Next iteration of EM.. 
+Without Penalty 
+[1] -27959.87
+With Penalty 
+[1] -30155.95
+Next iteration of EM.. 
+Without Penalty 
+[1] -27897.26
+With Penalty 
+[1] -30095.67
+Next iteration of EM.. 
+Without Penalty 
+[1] -27867.37
+With Penalty 
+[1] -30067.34
+Next iteration of EM.. 
+Without Penalty 
+[1] -27846.39
+With Penalty 
+[1] -30047.14
+Next iteration of EM.. 
+Without Penalty 
+[1] -27831.63
+With Penalty 
+[1] -30032.9
+Next iteration of EM.. 
+Without Penalty 
+[1] -27825.17
+With Penalty 
+[1] -30026.62
+Next iteration of EM.. 
+Without Penalty 
+[1] -27821.3
+With Penalty 
+[1] -30022.65
+Next iteration of EM.. 
+Without Penalty 
+[1] -27813.5
+With Penalty 
+[1] -30014.99
+Next iteration of EM.. 
+Without Penalty 
+[1] -27805.06
+With Penalty 
+[1] -30006.61
+Next iteration of EM.. 
+Without Penalty 
+[1] -27793.76
+With Penalty 
+[1] -29995.52
+Next iteration of EM.. 
+Without Penalty 
+[1] -27785.72
+With Penalty 
+[1] -29987.84
+Next iteration of EM.. 
+Without Penalty 
+[1] -27782.78
+With Penalty 
+[1] -29985.06
+Next iteration of EM.. 
+Without Penalty 
+[1] -27782.54
+With Penalty 
+[1] -29984.81
+Next iteration of EM.. 
+Without Penalty 
+[1] -27781.38
+With Penalty 
+[1] -29983.59
+Using seed value - [1] 7.270082
+
+Next iteration of EM.. 
+Without Penalty 
+[1] -34421.75
+With Penalty 
+[1] -36430.52
+Next iteration of EM.. 
+Without Penalty 
+[1] -33284.17
+With Penalty 
+[1] -35303.08
+Next iteration of EM.. 
+Without Penalty 
+[1] -29436.36
+With Penalty 
+[1] -31530.92
+Next iteration of EM.. 
+Without Penalty 
+[1] -28220.06
+With Penalty 
+[1] -30377.28
+Next iteration of EM.. 
+Without Penalty 
+[1] -27930.98
+With Penalty 
+[1] -30111.62
+Next iteration of EM.. 
+Without Penalty 
+[1] -27826.81
+With Penalty 
+[1] -30014.74
+Next iteration of EM.. 
+Without Penalty 
+[1] -27798.4
+With Penalty 
+[1] -29989.39
+Next iteration of EM.. 
+Without Penalty 
+[1] -27764.31
+With Penalty 
+[1] -29957.14
+Next iteration of EM.. 
+Without Penalty 
+[1] -27741.54
+With Penalty 
+[1] -29935.63
+Next iteration of EM.. 
+Without Penalty 
+[1] -27731.65
+With Penalty 
+[1] -29926.23
+Next iteration of EM.. 
+Without Penalty 
+[1] -27719.99
+With Penalty 
+[1] -29913.58
+Next iteration of EM.. 
+Without Penalty 
+[1] -27715.46
+With Penalty 
+[1] -29909.3
+Next iteration of EM.. 
+Without Penalty 
+[1] -27711.78
+With Penalty 
+[1] -29905.4
+Next iteration of EM.. 
+Without Penalty 
+[1] -27705.44
+With Penalty 
+[1] -29898.56
+Next iteration of EM.. 
+Without Penalty 
+[1] -27701.85
+With Penalty 
+[1] -29894.48
+Next iteration of EM.. 
+Without Penalty 
+[1] -27700.8
+With Penalty 
+[1] -29893.2
+Next iteration of EM.. 
+Without Penalty 
+[1] -27700.64
+With Penalty 
+[1] -29892.97
+Next iteration of EM.. 
+Without Penalty 
+[1] -27700.37
+With Penalty 
+[1] -29892.61
+Next iteration of EM.. 
+Without Penalty 
+[1] -27699.21
+With Penalty 
+[1] -29891.25
+Next iteration of EM.. 
+Without Penalty 
+[1] -27697.48
+With Penalty 
+[1] -29889.34
+Using seed value - [1] 46.15001
+
+Next iteration of EM.. 
+Without Penalty 
+[1] -34427.04
+With Penalty 
+[1] -36435.8
+Next iteration of EM.. 
+Without Penalty 
+[1] -33412.88
+With Penalty 
+[1] -35430.68
+Next iteration of EM.. 
+Without Penalty 
+[1] -29629.65
+With Penalty 
+[1] -31722.5
+Next iteration of EM.. 
+Without Penalty 
+[1] -28167.58
+With Penalty 
+[1] -30338.84
+Next iteration of EM.. 
+Without Penalty 
+[1] -27849.75
+With Penalty 
+[1] -30039.56
+Next iteration of EM.. 
+Without Penalty 
+[1] -27761.9
+With Penalty 
+[1] -29957.96
+Next iteration of EM.. 
+Without Penalty 
+[1] -27715.21
+With Penalty 
+[1] -29913.64
+Next iteration of EM.. 
+Without Penalty 
+[1] -27674.79
+With Penalty 
+[1] -29874.06
+Next iteration of EM.. 
+Without Penalty 
+[1] -27649.88
+With Penalty 
+[1] -29849.47
+Next iteration of EM.. 
+Without Penalty 
+[1] -27637.15
+With Penalty 
+[1] -29836.93
+Next iteration of EM.. 
+Without Penalty 
+[1] -27635.19
+With Penalty 
+[1] -29834.95
+Next iteration of EM.. 
+Without Penalty 
+[1] -27631.07
+With Penalty 
+[1] -29830.68
+Next iteration of EM.. 
+Without Penalty 
+[1] -27627.66
+With Penalty 
+[1] -29827.32
+Next iteration of EM.. 
+Without Penalty 
+[1] -27625.14
+With Penalty 
+[1] -29824.74
+Next iteration of EM.. 
+Without Penalty 
+[1] -27621.85
+With Penalty 
+[1] -29821.42
+Next iteration of EM.. 
+Without Penalty 
+[1] -27616.49
+With Penalty 
+[1] -29815.67
+Next iteration of EM.. 
+Without Penalty 
+[1] -27611.9
+With Penalty 
+[1] -29810.56
+Next iteration of EM.. 
+Without Penalty 
+[1] -27610.33
+With Penalty 
+[1] -29808.7
+Next iteration of EM.. 
+Without Penalty 
+[1] -27609.9
+With Penalty 
+[1] -29808.14
+Next iteration of EM.. 
+Without Penalty 
+[1] -27609.89
+With Penalty 
+[1] -29808.08
+Using seed value - [1] 21.55528
+
+Next iteration of EM.. 
+Without Penalty 
+[1] -34420.37
+With Penalty 
+[1] -36429.06
+Next iteration of EM.. 
+Without Penalty 
+[1] -33204.88
+With Penalty 
+[1] -35223.16
+Next iteration of EM.. 
+Without Penalty 
+[1] -29428.78
+With Penalty 
+[1] -31520.31
+Next iteration of EM.. 
+Without Penalty 
+[1] -28254.03
+With Penalty 
+[1] -30422.59
+Next iteration of EM.. 
+Without Penalty 
+[1] -28019.86
+With Penalty 
+[1] -30208.13
+Next iteration of EM.. 
+Without Penalty 
+[1] -27955.31
+With Penalty 
+[1] -30146.79
+Next iteration of EM.. 
+Without Penalty 
+[1] -27926.8
+With Penalty 
+[1] -30118.75
+Next iteration of EM.. 
+Without Penalty 
+[1] -27895.56
+With Penalty 
+[1] -30088.87
+Next iteration of EM.. 
+Without Penalty 
+[1] -27860.05
+With Penalty 
+[1] -30053.5
+Next iteration of EM.. 
+Without Penalty 
+[1] -27836.17
+With Penalty 
+[1] -30029.76
+Next iteration of EM.. 
+Without Penalty 
+[1] -27824.17
+With Penalty 
+[1] -30018.19
+Next iteration of EM.. 
+Without Penalty 
+[1] -27808.43
+With Penalty 
+[1] -30003.26
+Next iteration of EM.. 
+Without Penalty 
+[1] -27789.2
+With Penalty 
+[1] -29985.14
+Next iteration of EM.. 
+Without Penalty 
+[1] -27777.1
+With Penalty 
+[1] -29973.93
+Next iteration of EM.. 
+Without Penalty 
+[1] -27770.7
+With Penalty 
+[1] -29967.68
+Next iteration of EM.. 
+Without Penalty 
+[1] -27761.32
+With Penalty 
+[1] -29958.29
+Next iteration of EM.. 
+Without Penalty 
+[1] -27751.75
+With Penalty 
+[1] -29949.3
+Next iteration of EM.. 
+Without Penalty 
+[1] -27744.24
+With Penalty 
+[1] -29941.56
+Next iteration of EM.. 
+Without Penalty 
+[1] -27734.81
+With Penalty 
+[1] -29932.16
+Next iteration of EM.. 
+Without Penalty 
+[1] -27731.39
+With Penalty 
+[1] -29928.67
+Using seed value - [1] 30.93487
+
+Next iteration of EM.. 
+Without Penalty 
+[1] -34418.45
+With Penalty 
+[1] -36427.18
+Next iteration of EM.. 
+Without Penalty 
+[1] -33101.07
+With Penalty 
+[1] -35120.76
+Next iteration of EM.. 
+Without Penalty 
+[1] -29421.99
+With Penalty 
+[1] -31524.58
+Next iteration of EM.. 
+Without Penalty 
+[1] -28226.94
+With Penalty 
+[1] -30399.4
+Next iteration of EM.. 
+Without Penalty 
+[1] -27944.31
+With Penalty 
+[1] -30138.9
+Next iteration of EM.. 
+Without Penalty 
+[1] -27868.66
+With Penalty 
+[1] -30067.69
+Next iteration of EM.. 
+Without Penalty 
+[1] -27804.22
+With Penalty 
+[1] -30005.39
+Next iteration of EM.. 
+Without Penalty 
+[1] -27763.04
+With Penalty 
+[1] -29966.19
+Next iteration of EM.. 
+Without Penalty 
+[1] -27753.65
+With Penalty 
+[1] -29957.52
+Next iteration of EM.. 
+Without Penalty 
+[1] -27744.03
+With Penalty 
+[1] -29948.15
+Next iteration of EM.. 
+Without Penalty 
+[1] -27736.84
+With Penalty 
+[1] -29941.36
+Next iteration of EM.. 
+Without Penalty 
+[1] -27729.42
+With Penalty 
+[1] -29934.1
+Next iteration of EM.. 
+Without Penalty 
+[1] -27725.73
+With Penalty 
+[1] -29930.14
+Next iteration of EM.. 
+Without Penalty 
+[1] -27724.72
+With Penalty 
+[1] -29929.03
+Next iteration of EM.. 
+Without Penalty 
+[1] -27724.02
+With Penalty 
+[1] -29928.37
+Next iteration of EM.. 
+Without Penalty 
+[1] -27722.05
+With Penalty 
+[1] -29926.43
+Next iteration of EM.. 
+Without Penalty 
+[1] -27720.54
+With Penalty 
+[1] -29924.95
+Next iteration of EM.. 
+Without Penalty 
+[1] -27718.2
+With Penalty 
+[1] -29922.63
+Next iteration of EM.. 
+Without Penalty 
+[1] -27714.12
+With Penalty 
+[1] -29918.76
+Next iteration of EM.. 
+Without Penalty 
+[1] -27711.5
+With Penalty 
+[1] -29916.29
+Using seed value - [1] 4.876362
+
+Next iteration of EM.. 
+Without Penalty 
+[1] -34418.09
+With Penalty 
+[1] -36426.84
+Next iteration of EM.. 
+Without Penalty 
+[1] -33202.11
+With Penalty 
+[1] -35222.21
+Next iteration of EM.. 
+Without Penalty 
+[1] -29375.68
+With Penalty 
+[1] -31470.31
+Next iteration of EM.. 
+Without Penalty 
+[1] -28109.86
+With Penalty 
+[1] -30288.97
+Next iteration of EM.. 
+Without Penalty 
+[1] -27918.02
+With Penalty 
+[1] -30116.04
+Next iteration of EM.. 
+Without Penalty 
+[1] -27848.63
+With Penalty 
+[1] -30050.56
+Next iteration of EM.. 
+Without Penalty 
+[1] -27794.51
+With Penalty 
+[1] -29997.49
+Next iteration of EM.. 
+Without Penalty 
+[1] -27771.57
+With Penalty 
+[1] -29975.56
+Next iteration of EM.. 
+Without Penalty 
+[1] -27756.5
+With Penalty 
+[1] -29960.42
+Next iteration of EM.. 
+Without Penalty 
+[1] -27748.93
+With Penalty 
+[1] -29952.92
+Next iteration of EM.. 
+Without Penalty 
+[1] -27745.18
+With Penalty 
+[1] -29949.23
+Next iteration of EM.. 
+Without Penalty 
+[1] -27739.61
+With Penalty 
+[1] -29943.55
+Next iteration of EM.. 
+Without Penalty 
+[1] -27733.89
+With Penalty 
+[1] -29937.63
+Next iteration of EM.. 
+Without Penalty 
+[1] -27731.09
+With Penalty 
+[1] -29934.4
+Next iteration of EM.. 
+Without Penalty 
+[1] -27730.07
+With Penalty 
+[1] -29933.22
+Next iteration of EM.. 
+Without Penalty 
+[1] -27729.01
+With Penalty 
+[1] -29932.16
+Next iteration of EM.. 
+Without Penalty 
+[1] -27726.74
+With Penalty 
+[1] -29929.96
+Next iteration of EM.. 
+Without Penalty 
+[1] -27721.96
+With Penalty 
+[1] -29925.21
+Next iteration of EM.. 
+Without Penalty 
+[1] -27720.76
+With Penalty 
+[1] -29923.87
+Next iteration of EM.. 
+Without Penalty 
+[1] -27717.96
+With Penalty 
+[1] -29920.83
+Using seed value - [1] 4.998623
+
+Next iteration of EM.. 
+Without Penalty 
+[1] -34418.09
+With Penalty 
+[1] -36426.84
+Next iteration of EM.. 
+Without Penalty 
+[1] -33202.11
+With Penalty 
+[1] -35222.21
+Next iteration of EM.. 
+Without Penalty 
+[1] -29375.68
+With Penalty 
+[1] -31470.31
+Next iteration of EM.. 
+Without Penalty 
+[1] -28109.86
+With Penalty 
+[1] -30288.97
+Next iteration of EM.. 
+Without Penalty 
+[1] -27918.02
+With Penalty 
+[1] -30116.04
+Next iteration of EM.. 
+Without Penalty 
+[1] -27848.63
+With Penalty 
+[1] -30050.56
+Next iteration of EM.. 
+Without Penalty 
+[1] -27794.51
+With Penalty 
+[1] -29997.49
+Next iteration of EM.. 
+Without Penalty 
+[1] -27771.57
+With Penalty 
+[1] -29975.56
+Next iteration of EM.. 
+Without Penalty 
+[1] -27756.5
+With Penalty 
+[1] -29960.42
+Next iteration of EM.. 
+Without Penalty 
+[1] -27748.93
+With Penalty 
+[1] -29952.92
+Next iteration of EM.. 
+Without Penalty 
+[1] -27745.18
+With Penalty 
+[1] -29949.23
+Next iteration of EM.. 
+Without Penalty 
+[1] -27739.61
+With Penalty 
+[1] -29943.55
+Next iteration of EM.. 
+Without Penalty 
+[1] -27733.89
+With Penalty 
+[1] -29937.63
+Next iteration of EM.. 
+Without Penalty 
+[1] -27731.09
+With Penalty 
+[1] -29934.4
+Next iteration of EM.. 
+Without Penalty 
+[1] -27730.07
+With Penalty 
+[1] -29933.22
+Next iteration of EM.. 
+Without Penalty 
+[1] -27729.01
+With Penalty 
+[1] -29932.16
+Next iteration of EM.. 
+Without Penalty 
+[1] -27726.74
+With Penalty 
+[1] -29929.96
+Next iteration of EM.. 
+Without Penalty 
+[1] -27721.96
+With Penalty 
+[1] -29925.21
+Next iteration of EM.. 
+Without Penalty 
+[1] -27720.76
+With Penalty 
+[1] -29923.87
+Next iteration of EM.. 
+Without Penalty 
+[1] -27717.96
+With Penalty 
+[1] -29920.83
+Using seed value - [1] 4.998623
+
+Next iteration of EM.. 
+Without Penalty 
+[1] -34418.09
+With Penalty 
+[1] -36426.84
+Next iteration of EM.. 
+Without Penalty 
+[1] -33202.11
+With Penalty 
+[1] -35222.21
+Next iteration of EM.. 
+Without Penalty 
+[1] -29375.68
+With Penalty 
+[1] -31470.31
+Next iteration of EM.. 
+Without Penalty 
+[1] -28109.86
+With Penalty 
+[1] -30288.97
+Next iteration of EM.. 
+Without Penalty 
+[1] -27918.02
+With Penalty 
+[1] -30116.04
+Next iteration of EM.. 
+Without Penalty 
+[1] -27848.63
+With Penalty 
+[1] -30050.56
+Next iteration of EM.. 
+Without Penalty 
+[1] -27794.51
+With Penalty 
+[1] -29997.49
+Next iteration of EM.. 
+Without Penalty 
+[1] -27771.57
+With Penalty 
+[1] -29975.56
+Next iteration of EM.. 
+Without Penalty 
+[1] -27756.5
+With Penalty 
+[1] -29960.42
+Next iteration of EM.. 
+Without Penalty 
+[1] -27748.93
+With Penalty 
+[1] -29952.92
+Next iteration of EM.. 
+Without Penalty 
+[1] -27745.18
+With Penalty 
+[1] -29949.23
+Next iteration of EM.. 
+Without Penalty 
+[1] -27739.61
+With Penalty 
+[1] -29943.55
+Next iteration of EM.. 
+Without Penalty 
+[1] -27733.89
+With Penalty 
+[1] -29937.63
+Next iteration of EM.. 
+Without Penalty 
+[1] -27731.09
+With Penalty 
+[1] -29934.4
+Next iteration of EM.. 
+Without Penalty 
+[1] -27730.07
+With Penalty 
+[1] -29933.22
+Next iteration of EM.. 
+Without Penalty 
+[1] -27729.01
+With Penalty 
+[1] -29932.16
+Next iteration of EM.. 
+Without Penalty 
+[1] -27726.74
+With Penalty 
+[1] -29929.96
+Next iteration of EM.. 
+Without Penalty 
+[1] -27721.96
+With Penalty 
+[1] -29925.21
+Next iteration of EM.. 
+Without Penalty 
+[1] -27720.76
+With Penalty 
+[1] -29923.87
+Next iteration of EM.. 
+Without Penalty 
+[1] -27717.96
+With Penalty 
+[1] -29920.83
+Using seed value - [1] 4.998623
+
+Next iteration of EM.. 
+Without Penalty 
+[1] -34418.09
+With Penalty 
+[1] -36426.84
+Next iteration of EM.. 
+Without Penalty 
+[1] -33202.11
+With Penalty 
+[1] -35222.21
+Next iteration of EM.. 
+Without Penalty 
+[1] -29375.68
+With Penalty 
+[1] -31470.31
+Next iteration of EM.. 
+Without Penalty 
+[1] -28109.86
+With Penalty 
+[1] -30288.97
+Next iteration of EM.. 
+Without Penalty 
+[1] -27918.02
+With Penalty 
+[1] -30116.04
+Next iteration of EM.. 
+Without Penalty 
+[1] -27848.63
+With Penalty 
+[1] -30050.56
+Next iteration of EM.. 
+Without Penalty 
+[1] -27794.51
+With Penalty 
+[1] -29997.49
+Next iteration of EM.. 
+Without Penalty 
+[1] -27771.57
+With Penalty 
+[1] -29975.56
+Next iteration of EM.. 
+Without Penalty 
+[1] -27756.5
+With Penalty 
+[1] -29960.42
+Next iteration of EM.. 
+Without Penalty 
+[1] -27748.93
+With Penalty 
+[1] -29952.92
+Next iteration of EM.. 
+Without Penalty 
+[1] -27745.18
+With Penalty 
+[1] -29949.23
+Next iteration of EM.. 
+Without Penalty 
+[1] -27739.61
+With Penalty 
+[1] -29943.55
+Next iteration of EM.. 
+Without Penalty 
+[1] -27733.89
+With Penalty 
+[1] -29937.63
+Next iteration of EM.. 
+Without Penalty 
+[1] -27731.09
+With Penalty 
+[1] -29934.4
+Next iteration of EM.. 
+Without Penalty 
+[1] -27730.07
+With Penalty 
+[1] -29933.22
+Next iteration of EM.. 
+Without Penalty 
+[1] -27729.01
+With Penalty 
+[1] -29932.16
+Next iteration of EM.. 
+Without Penalty 
+[1] -27726.74
+With Penalty 
+[1] -29929.96
+Next iteration of EM.. 
+Without Penalty 
+[1] -27721.96
+With Penalty 
+[1] -29925.21
+Next iteration of EM.. 
+Without Penalty 
+[1] -27720.76
+With Penalty 
+[1] -29923.87
+Next iteration of EM.. 
+Without Penalty 
+[1] -27717.96
+With Penalty 
+[1] -29920.83
+Using seed value - [1] 4.998623
+
+Next iteration of EM.. 
+Without Penalty 
+[1] -34418.09
+With Penalty 
+[1] -36426.84
+Next iteration of EM.. 
+Without Penalty 
+[1] -33202.11
+With Penalty 
+[1] -35222.21
+Next iteration of EM.. 
+Without Penalty 
+[1] -29375.68
+With Penalty 
+[1] -31470.31
+Next iteration of EM.. 
+Without Penalty 
+[1] -28109.86
+With Penalty 
+[1] -30288.97
+Next iteration of EM.. 
+Without Penalty 
+[1] -27918.02
+With Penalty 
+[1] -30116.04
+Next iteration of EM.. 
+Without Penalty 
+[1] -27848.63
+With Penalty 
+[1] -30050.56
+Next iteration of EM.. 
+Without Penalty 
+[1] -27794.51
+With Penalty 
+[1] -29997.49
+Next iteration of EM.. 
+Without Penalty 
+[1] -27771.57
+With Penalty 
+[1] -29975.56
+Next iteration of EM.. 
+Without Penalty 
+[1] -27756.5
+With Penalty 
+[1] -29960.42
+Next iteration of EM.. 
+Without Penalty 
+[1] -27748.93
+With Penalty 
+[1] -29952.92
+Next iteration of EM.. 
+Without Penalty 
+[1] -27745.18
+With Penalty 
+[1] -29949.23
+Next iteration of EM.. 
+Without Penalty 
+[1] -27739.61
+With Penalty 
+[1] -29943.55
+Next iteration of EM.. 
+Without Penalty 
+[1] -27733.89
+With Penalty 
+[1] -29937.63
+Next iteration of EM.. 
+Without Penalty 
+[1] -27731.09
+With Penalty 
+[1] -29934.4
+Next iteration of EM.. 
+Without Penalty 
+[1] -27730.07
+With Penalty 
+[1] -29933.22
+Next iteration of EM.. 
+Without Penalty 
+[1] -27729.01
+With Penalty 
+[1] -29932.16
+Next iteration of EM.. 
+Without Penalty 
+[1] -27726.74
+With Penalty 
+[1] -29929.96
+Next iteration of EM.. 
+Without Penalty 
+[1] -27721.96
+With Penalty 
+[1] -29925.21
+Next iteration of EM.. 
+Without Penalty 
+[1] -27720.76
+With Penalty 
+[1] -29923.87
+Next iteration of EM.. 
+Without Penalty 
+[1] -27717.96
+With Penalty 
+[1] -29920.83
+
+> sink()

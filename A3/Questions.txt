@@ -1,0 +1,10 @@
+
+1. For, the binary response based log likelihood all I need to change is dE_do since E is the only thing that is really changing, correct?
+
+2. To add the penalty,all I need to do is lambda * sum(wl$w1^2) in the log likelihood and for dE_do set it to basically dE_do + 2*lambda*sum(wl$w1), right? 
+
+3.When I add the regularization parameter, the cost function, for a given learning rate and number of iterations, all of a sudden the penalized minus log likelihood
+starts increasing. Is this natural? If I decrease the learning rate and increase the number of iterations, I get good behaviour, though. Why is this happening?Is this
+correct?
+
+4. How to use the chekc_gradient function?

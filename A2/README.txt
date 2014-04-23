@@ -1,1 +1,0 @@
-EM.r contains methods for running EM on mixtures of binomial distributions

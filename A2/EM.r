@@ -16,7 +16,6 @@ training_data <- function(data)
 set_initial_parameters <- function(trainx,trainy,seedval)
 {
   set.seed(seedval)
-  #q_values<- initialize_q()
 
   initialize_resp_mat(trainx,trainy)
   
@@ -64,10 +63,8 @@ calculateLogLikelihood <- function(trainx,trainy)
     {
       theta_vec <- theta_matrix[start+k,]
       alt_theta_vec <- 1-theta_vec
-      #print(theta_vec)
       feature_product <- prod((theta_vec^trainx[i,])*(alt_theta_vec^(1-trainx[i,])))
       prob <- prob + mixing_values_vec[k+1]*feature_product
-     # print(mixing_values_vec)
       
     }
     log_likelihood <- log_likelihood + log(prob)
@@ -75,7 +72,10 @@ calculateLogLikelihood <- function(trainx,trainy)
     
   }
   penalty <- calculatePenalty()
-  
+  #cat("Without Penalty \n")
+  #print (log_likelihood)
+ # cat("With Penalty \n")
+  #print (log_likelihood+penalty)
   return (log_likelihood+penalty)
 }
 
@@ -152,9 +152,9 @@ E_step <- function(trainx,trainy)
 M_step<-function(trainx)
 {
   #update parameter values
-  mixing_vector <- update_mixing_prop(trainx)
-  theta_matrix <- update_thetas(trainx)
-  return (list(mixing_vector,theta_matrix))
+  update_mixing_prop(trainx)
+  update_thetas(trainx)
+  #return (list(mixing_vector,theta_matrix))
 }
 
 # Function to update the mixing proportions of each component
@@ -162,12 +162,12 @@ M_step<-function(trainx)
 # models. By summing the responsibilities for all training examples
 # across each component we get the mixing prop of each component.
 
-update_mixing_prop <- function(trainx,mixing_vector,resp_matrix)
+update_mixing_prop <- function(trainx)
 {
   num_tr <- nrow(trainx)
-  mixing_vector <- colSums(resp_matrix)
-  mixing_vector <- mixing_vector/num_tr
-  return (mixing_vector)
+  mixing_vector <<- colSums(resp_matrix)
+  mixing_vector <<- mixing_vector/num_tr
+  #return (mixing_vector)
   
   
 }
@@ -177,7 +177,7 @@ update_mixing_prop <- function(trainx,mixing_vector,resp_matrix)
 # across all training examples, and multiplies it with the entire training mat.
 # to help compute the new values of theta.
 
-update_thetas <- function(trainx,resp_matrix,theta_matrix)
+update_thetas <- function(trainx)
 {
   transpose_train <- t(trainx)#196x800 matrix
   
@@ -254,7 +254,7 @@ averagePrediction<-function(testx)
   {
     # set diff. init. values
     set_initial_parameters(trainx,trainy,seed_values[i])
-    runEM(trainx,trainy,1)
+    runEM(trainx,trainy,10)
     # add all the class probability matrices
     class_prob <- class_prob+predictClass(testx) 
     

@@ -1,0 +1,137 @@
+
+> source("EM2.r")
+
+> show_digit <- function (im)
++ {
++   image (1:14, 1:14, t(apply (matrix(im,14,14,byrow=TRUE), 2, rev)),
++          col=gray(seq(0,1,length=100)),
++   .... [TRUNCATED] 
+
+> # Function to average the prediction for different trials. Basically, compute
+> # the class probabilities for 10 different runs of EM, each seeded w .... [TRUNCATED] 
+
+> trainx <- training_data("trn.txt")
+
+> trainy <- training_data("trnlab.txt")
+
+> testx <- training_data("tst.txt")
+
+> testy <- training_data("tstlab.txt")
+
+> K <- 5
+
+> num_features <- ncol(trainx)
+
+> num_classes <- 10
+
+> num_components <- K*num_classes
+
+> num_iters <- 20
+
+> alpha <- 0.05
+
+> sink("testoutput2",append = TRUE)
+
+> pred_classes <- averagePrediction(testx,trainx,trainy,alpha,K,num_iters)
+Using seed value - [1] 225
+
+Next iteration of EM.. 
+Without Penalty 
+[1] -34419.15
+With Penalty 
+[1] -36427.87
+Next iteration of EM.. 
+Without Penalty 
+[1] -33125.74
+With Penalty 
+[1] -35144.32
+Next iteration of EM.. 
+Without Penalty 
+[1] -29501.65
+With Penalty 
+[1] -31600.25
+Next iteration of EM.. 
+Without Penalty 
+[1] -28147.82
+With Penalty 
+[1] -30327.27
+Next iteration of EM.. 
+Without Penalty 
+[1] -27926.43
+With Penalty 
+[1] -30125.1
+Next iteration of EM.. 
+Without Penalty 
+[1] -27832.11
+With Penalty 
+[1] -30037.26
+Next iteration of EM.. 
+Without Penalty 
+[1] -27792.92
+With Penalty 
+[1] -30001.6
+Next iteration of EM.. 
+Without Penalty 
+[1] -27778.69
+With Penalty 
+[1] -29988.64
+Next iteration of EM.. 
+Without Penalty 
+[1] -27758.67
+With Penalty 
+[1] -29968.47
+Next iteration of EM.. 
+Without Penalty 
+[1] -27749.25
+With Penalty 
+[1] -29959.14
+Next iteration of EM.. 
+Without Penalty 
+[1] -27734.61
+With Penalty 
+[1] -29944.22
+Next iteration of EM.. 
+Without Penalty 
+[1] -27720.65
+With Penalty 
+[1] -29930.47
+Next iteration of EM.. 
+Without Penalty 
+[1] -27712.25
+With Penalty 
+[1] -29922.12
+Next iteration of EM.. 
+Without Penalty 
+[1] -27700.18
+With Penalty 
+[1] -29910.41
+Next iteration of EM.. 
+Without Penalty 
+[1] -27687.51
+With Penalty 
+[1] -29897.92
+Next iteration of EM.. 
+Without Penalty 
+[1] -27681.34
+With Penalty 
+[1] -29892.31
+Next iteration of EM.. 
+Without Penalty 
+[1] -27676.27
+With Penalty 
+[1] -29887.22
+Next iteration of EM.. 
+Without Penalty 
+[1] -27661.03
+With Penalty 
+[1] -29872.3
+Next iteration of EM.. 
+Without Penalty 
+[1] -27652.09
+With Penalty 
+[1] -29863.97
+Next iteration of EM.. 
+Without Penalty 
+[1] -27641.84
+With Penalty 
+[1] -29853.9
