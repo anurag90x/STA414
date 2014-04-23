@@ -1,3 +1,10 @@
+'''
+
+Quick script to parse output and check that log likelihood is continuously increasing.
+
+'''
+
+
 def checkLL():
 	fileO = open("testoutput2","r")
 	withoutP = "Without Penalty "
@@ -36,7 +43,7 @@ def checkLL():
 	print "******************"
 	for i in range(1,len(withPList)):
 		if withPList[i]<withPList[i-1]:
-			print "Well that went down..FUCK"
+			print "Well that went down.."
 			break
 	#print withPList
 	
