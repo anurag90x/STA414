@@ -1,56 +1,9 @@
-source("GPsquareExponentialCov.r")
-library("rbenchmark")
 
 
-try_different_hypers <- function(trainx,trainy,trainx2,trainy2,testx,testy)
-{
-  noise <-  runif(10,min=1,max=10)
-  gamma <- runif(10,min=0.1,max=10)
-  rho <- runif(10,min=0.1,max=10)
-  for(i in 1:5)
-  {
-    hypers <- c(noise[i],gamma[i],rho[i])
-    
-    cat("\nTesting with hypers ",hypers,"\n")
-    
-    hyperparam <- gp_find_hypers (trainx,trainy, square_cov, hypers)
-    predicted_y <- gp_predict (trainx, trainy, testx,square_cov, hyperparam)
-    square_error <- find_square_error(predicted_y,testy)
-    
-    
-    cat("For second training set \n")
-    
-    hypers <- c(noise[i],gamma[i],rho[i])
-    
-    hyperparam_tr2 <- gp_find_hypers (trainx2,trainy2, square_cov, hypers)
-    predicted_y_tr2 <- gp_predict (trainx2, trainy2, testx,square_cov, hyperparam_tr2)
-    square_error_tr2 <- find_square_error(predicted_y_tr2,testy)
-    
-    
-    cat("########################################\n")
-  }
-  
-}
-
-
-
-# load the data
-x <- training_data("train1x.txt")
-y <- training_data("train1y.txt")
-# load the data
-x2 <- training_data("train2x.txt")
-y2 <- training_data("train2y.txt")
-
-testx <- training_data("testx.txt")
-testy <- training_data("testy.txt")
-
-x<-scale_data(x)
-x2<-scale_data(x2)
-testx <- scale_data(testx)
 
 # Test 1 - Square error for square covariance function
-hyperparam <- gp_find_hypers (x, y, square_cov, c(3.836155,1.883457,9.242932))
-hyperparam_tr2 <- gp_find_hypers (x2, y2, square_cov, c(3.836155,1.883457,9.242932))
+hyperparam <- gp_find_hypers (x, y, square_cov, c(4,4,4))
+hyperparam_tr2 <- gp_find_hypers (x2, y2, square_cov, c(4,4,4))
 
 average_time_predicted <- benchmark(replications = 5,predicted_y <- gp_predict (x, y, testx,square_cov, hyperparam))
 average_time_predicted_tr2 <- benchmark(replications = 5,predicted_y_tr2 <- gp_predict (x2, y2, testx,square_cov, hyperparam_tr2))
@@ -75,8 +28,8 @@ x<-scale_data(x)
 x2<-scale_data(x2)
 testx <- scale_data(testx)
 
-hyperparam <- gp_find_hypers (x, y, square_cov, c(3.836155,1.883457,9.242932))
-hyperparam_tr2 <- gp_find_hypers (x2, y2, square_cov, c(3.836155,1.883457,9.242932))
+hyperparam <- gp_find_hypers (x, y, square_cov, c(4,4,4))
+hyperparam_tr2 <- gp_find_hypers (x2, y2, square_cov, c(4,4,4))
 
 average_time_predicted <- benchmark(replications = 5,predicted_y <- gp_predict (x, y, testx,square_cov, hyperparam))
 average_time_predicted_tr2 <- benchmark(replications = 5,predicted_y_tr2 <- gp_predict (x2, y2, testx,square_cov, hyperparam_tr2))
@@ -96,8 +49,8 @@ print(average_time_predicted_tr2$elapsed/average_time_predicted_tr2$replications
 
 
 # Test 1 - Square error for absolute covariance function
-hyperparam_abs <- gp_find_hypers (x, y, absolute_cov, c(3.836155,1.883457,9.242932))
-hyperparam_abs_tr2 <- gp_find_hypers (x2, y2, absolute_cov, c(3.836155,1.883457,9.242932))
+hyperparam_abs <- gp_find_hypers (x, y, absolute_cov, c(4,4,4))
+hyperparam_abs_tr2 <- gp_find_hypers (x2, y2, absolute_cov, c(4,4,4))
 
 average_time_predicted_abs <- benchmark(replications = 5,predicted_y_abs <- gp_predict (x, y, testx,absolute_cov, hyperparam_abs))
 average_time_predicted_abs_tr2 <- benchmark(replications = 5,predicted_y_abs_tr2 <- gp_predict (x2, y2, testx,absolute_cov, hyperparam_abs_tr2))
@@ -115,8 +68,8 @@ print(average_time_predicted_abs_tr2$elapsed/average_time_predicted_abs_tr2$repl
 
 
 # Test 1 - Square error for combined covariance function
-hyperparam_combo <- gp_find_hypers (x, y, combined_cov, c(3.836155,1.883457,9.242932,2.5))
-hyperparam_combo_tr2 <- gp_find_hypers (x2, y2, combined_cov, c(3.836155,1.883457,9.242932,2.5))
+hyperparam_combo <- gp_find_hypers (x, y, combined_cov, c(4,4,4,4))
+hyperparam_combo_tr2 <- gp_find_hypers (x2, y2, combined_cov, c(4,4,4,4))
 
 average_time_predicted_combined <- benchmark(replications = 5,predicted_y_combined <- gp_predict (x, y, testx,combined_cov, hyperparam_combo))
 average_time_predicted_combined_tr2 <- benchmark(replications =5,predicted_y_combined_tr2 <- gp_predict (x2, y2, testx,combined_cov, hyperparam_combo_tr2))
@@ -135,15 +88,15 @@ print(average_time_predicted_combined_tr2$elapsed/average_time_predicted_combine
 # Test 2 - Cross validation error 
 
 
-average_time_cv <- benchmark(replications = 1,cross_validation_set <- cross_validation(x,y,square_cov,c(3.836155,1.883457,9.242932)))
-average_time_cv_tr2 <- benchmark(replications = 1,cross_validation_set_tr2 <- cross_validation(x2,y2,square_cov,c(3.836155,1.883457,9.242932)))
+average_time_cv <- benchmark(replications = 1,cross_validation_set <- cross_validation(x,y,square_cov,c(4,4,4)))
+average_time_cv_tr2 <- benchmark(replications = 1,cross_validation_set_tr2 <- cross_validation(x2,y2,square_cov,c(4,4,4)))
 
-average_time_cv_abs <- benchmark(replications = 1,cross_validation_abs <- cross_validation(x,y,absolute_cov,c(3.836155,1.883457,9.242932)))
-average_time_cv_abs_tr2 <- benchmark(replications = 1,cross_validation_abs_tr2 <- cross_validation(x2,y2,absolute_cov,c(3.836155,1.883457,9.242932)))
+average_time_cv_abs <- benchmark(replications = 1,cross_validation_abs <- cross_validation(x,y,absolute_cov,c(4,4,4)))
+average_time_cv_abs_tr2 <- benchmark(replications = 1,cross_validation_abs_tr2 <- cross_validation(x2,y2,absolute_cov,c(4,4,4)))
 
 
-average_time_cv_combined <- benchmark(replications = 1,cross_validation_combined <- cross_validation(x,y,combined_cov,c(3.836155,1.883457,9.242932,2.5)))
-average_time_cv_combined_tr2 <- benchmark(replications = 1,cross_validation_combined_tr2 <- cross_validation(x2,y2,combined_cov,c(3.836155,1.883457,9.242932,2.5)))
+average_time_cv_combined <- benchmark(replications = 1,cross_validation_combined <- cross_validation(x,y,combined_cov,c(4,4,4,4)))
+average_time_cv_combined_tr2 <- benchmark(replications = 1,cross_validation_combined_tr2 <- cross_validation(x2,y2,combined_cov,c(4,4,4,4)))
 
 
 cat("CROSS VALIDATION ERRORS \n")

@@ -1,0 +1,160 @@
+Maximum log likelihood: -190.4913 
+
+> hyperparam_abs_tr2 <- gp_find_hypers (x2, y2, absolute_cov, c(4,4,4))
+
+> source("GPsquareExponentialCov.r")
+
+> library("rbenchmark")
+
+> try_different_hypers <- function(trainx,trainy,trainx2,trainy2,testx,testy)
++ {
++   noise <-  runif(10,min=1,max=10)
++   gamma <- runif(10,min=0.1,m .... [TRUNCATED] 
+
+> # load the data
+> x <- training_data("train1x.txt")
+
+> y <- training_data("train1y.txt")
+
+> # load the data
+> x2 <- training_data("train2x.txt")
+
+> y2 <- training_data("train2y.txt")
+
+> testx <- training_data("testx.txt")
+
+> testy <- training_data("testy.txt")
+
+> sink("covarianceoutput.txt",append=TRUE)
+
+> #try_different_hypers(x,y,x2,y2,testx,testy)
+> 
+> 
+> # Test 1 - Square error for square covariance function
+> hyperparam <- gp_find_hypers (x, y, sq .... [TRUNCATED] 
+Maximum log likelihood: -197.8135 
+
+> hyperparam_tr2 <- gp_find_hypers (x2, y2, square_cov, c(3.836155 ,1.883457,9.242932))
+Maximum log likelihood: -209.0035 
+
+> average_time_predicted <- benchmark(replications = 5,predicted_y <- gp_predict (x, y, testx,square_cov, hyperparam))
+
+> average_time_predicted_tr2 <- benchmark(replications = 5,predicted_y_tr2 <- gp_predict (x2, y2, testx,square_cov, hyperparam_tr2))
+
+> square_error <- find_square_error(predicted_y,testy)
+
+> square_error_tr2 <- find_square_error(predicted_y_tr2,testy)
+
+> cat("SQUARE COVARIANCE UNSCALED DATA \n")
+SQUARE COVARIANCE UNSCALED DATA 
+
+> print (square_error)
+[1] 0.2930736
+
+> print (square_error_tr2)
+[1] 0.2566457
+
+> print(average_time_predicted$elapsed/average_time_predicted$replications)
+[1] 0.622
+
+> print(average_time_predicted_tr2$elapsed/average_time_predicted_tr2$replications)
+[1] 0.616
+
+> # Test 1 - Square error for square covariance function
+> 
+> x<-scale_data(x)
+
+> x2<-scale_data(x2)
+
+> testx <- scale_data(testx)
+
+> hyperparam <- gp_find_hypers (x, y, square_cov, c(3.836155 ,1.883457,9.242932))
+Maximum log likelihood: -201.0563 
+
+> hyperparam_tr2 <- gp_find_hypers (x2, y2, square_cov, c(3.836155 ,1.883457,9.242932))
+Maximum log likelihood: -203.1627 
+
+> average_time_predicted <- benchmark(replications = 5,predicted_y <- gp_predict (x, y, testx,square_cov, hyperparam))
+
+> average_time_predicted_tr2 <- benchmark(replications = 5,predicted_y_tr2 <- gp_predict (x2, y2, testx,square_cov, hyperparam_tr2))
+
+> square_error <- find_square_error(predicted_y,testy)
+
+> square_error_tr2 <- find_square_error(predicted_y_tr2,testy)
+
+> cat("SQUARE COVARIANCE SCALED DATA \n")
+SQUARE COVARIANCE SCALED DATA 
+
+> print (square_error)
+[1] 0.2435766
+
+> print (square_error_tr2)
+[1] 0.245429
+
+> print(average_time_predicted$elapsed/average_time_predicted$replications)
+[1] 0.602
+
+> print(average_time_predicted_tr2$elapsed/average_time_predicted_tr2$replications)
+[1] 0.612
+
+> # Test 1 - Square error for absolute covariance function
+> hyperparam_abs <- gp_find_hypers (x, y, absolute_cov, c(3.836155 ,1.883457,9.242932))
+Maximum log likelihood: -190.4913 
+
+> hyperparam_abs_tr2 <- gp_find_hypers (x2, y2, absolute_cov, c(3.836155 ,1.883457,9.242932))
+Maximum log likelihood: -205.8753 
+
+> average_time_predicted_abs <- benchmark(replications = 5,predicted_y_abs <- gp_predict (x, y, testx,absolute_cov, hyperparam_abs))
+
+> average_time_predicted_abs_tr2 <- benchmark(replications = 5,predicted_y_abs_tr2 <- gp_predict (x2, y2, testx,absolute_cov, hyperparam_abs_tr2))
+
+> square_error_abs <- find_square_error(predicted_y_abs,testy)
+
+> square_error_abs_tr2 <- find_square_error(predicted_y_abs_tr2,testy)
+
+> cat("ABSOLUTE COVARIANCE SCALED DATA \n")
+ABSOLUTE COVARIANCE SCALED DATA 
+
+> print (square_error_abs)
+[1] 0.240903
+
+> print (square_error_abs_tr2)
+[1] 0.2164909
+
+> print(average_time_predicted_abs$elapsed/average_time_predicted_abs$replications)
+[1] 0.614
+
+> print(average_time_predicted_abs_tr2$elapsed/average_time_predicted_abs_tr2$replications)
+[1] 0.634
+
+> # Test 1 - Square error for combined covariance function
+> hyperparam_combo <- gp_find_hypers (x, y, combined_cov, c(3.836155 ,1.883457,2.5,9.242932 .... [TRUNCATED] 
+Maximum log likelihood: -190.5835 
+
+> hyperparam_combo_tr2 <- gp_find_hypers (x2, y2, combined_cov, c(3.836155 ,1.883457,2.5,9.242932))
+Maximum log likelihood: -203.2883 
+
+> average_time_predicted_combined <- benchmark(replications = 5,predicted_y_combined <- gp_predict (x, y, testx,combined_cov, hyperparam_combo))
+
+> average_time_predicted_combined_tr2 <- benchmark(replications =5,predicted_y_combined_tr2 <- gp_predict (x2, y2, testx,combined_cov, hyperparam_comb .... [TRUNCATED] 
+
+> square_error_combined <- find_square_error(predicted_y_combined,testy)
+
+> square_error_combined_tr2 <- find_square_error(predicted_y_combined_tr2,testy)
+
+> cat("COMBINED COVARIANCE SCALED DATA \n")
+COMBINED COVARIANCE SCALED DATA 
+
+> print (square_error_combined)
+[1] 0.237124
+
+> print (square_error_combined_tr2)
+[1] 0.2207385
+
+> print(average_time_predicted_combined$elapsed/average_time_predicted_combined$replications)
+[1] 0.92
+
+> print(average_time_predicted_combined_tr2$elapsed/average_time_predicted_combined_tr2$replications)
+[1] 0.926
+
+> sink()

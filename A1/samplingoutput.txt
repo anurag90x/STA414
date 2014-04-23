@@ -1,0 +1,132 @@
+
+> source("GPsquareExponentialCov.r")
+
+> library("rbenchmark")
+
+> try_different_hypers <- function(trainx,trainy,trainx2,trainy2,testx,testy)
++ {
++   noise <-  runif(10,min=1,max=10)
++   gamma <- runif(10,min=0.1,m .... [TRUNCATED] 
+
+> # load the data
+> x <- training_data("train1x.txt")
+
+> y <- training_data("train1y.txt")
+
+> # load the data
+> x2 <- training_data("train2x.txt")
+
+> y2 <- training_data("train2y.txt")
+
+> testx <- training_data("testx.txt")
+
+> testy <- training_data("testy.txt")
+
+> x<-scale_data(x)
+
+> x2<-scale_data(x2)
+
+> testx <- scale_data(testx)
+
+> sink("samplingoutput.txt",append=TRUE)
+
+> # Test 3 Importance Sampling
+> 
+> average_time_samp <- benchmark(replications = 1, sample_sq_error <- importance_sampling(x,y,testx,testy,square_cov .... [TRUNCATED] 
+[1] 2.701276e-91
+[1] 2.701276e-91
+
+> average_time_samp_tr2 <- benchmark(replications = 1, sample_sq_error_tr2 <- importance_sampling(x2,y2,testx,testy,square_cov))
+[1] 3.683751e-94
+[1] 3.683751e-94
+
+> average_time_samp_abs <- benchmark(replications = 1, sample_abs_error <- importance_sampling(x,y,testx,testy,absolute_cov))
+[1] 5.097887e-86
+[1] 5.097887e-86
+
+> average_time_samp_abs_tr2 <- benchmark(replications = 1, sample_abs_error_tr2 <- importance_sampling(x2,y2,testx,testy,absolute_cov))
+[1] 3.335935e-91
+[1] 3.335935e-91
+
+> average_time_samp_combo <- benchmark(replications = 1, sample_comb_error <- importance_sampling(x,y,testx,testy,combined_cov))
+[1] 3.401275e-85
+[1] 3.401275e-85
+
+> average_time_samp_combo_tr2 <- benchmark(replications = 1, sample_comb_error_tr2 <- importance_sampling(x,y,testx,testy,combined_cov))
+[1] 3.401275e-85
+[1] 3.401275e-85
+
+> cat("Square error values for sampling \n ")
+Square error values for sampling 
+ 
+> print(sample_sq_error)
+[1] 0.2392045
+
+> print(sample_sq_error_tr2)
+[1] 0.2421811
+
+> print(sample_abs_error)
+[1] 0.2435177
+
+> print(sample_abs_error_tr2)
+[1] 0.2156638
+
+> print(sample_comb_error)
+[1] 0.2296235
+
+> print(sample_comb_error_tr2)
+[1] 0.2296235
+
+> cat("Importance Sampling Errors for 1000 points \n")
+Importance Sampling Errors for 1000 points 
+
+> print(average_time_samp$elapsed/average_time_samp$replications)
+[1] 84.09
+
+> print (average_time_samp_tr2$elapsed/average_time_samp_tr2$replications)
+[1] 83.62
+
+> print (average_time_samp_abs$elapsed/average_time_samp_abs$replications)
+[1] 83.07
+
+> print (average_time_samp_abs_tr2$elapsed/average_time_samp_abs_tr2$replications)
+[1] 82.78
+
+> print (average_time_samp_combo$elapsed/average_time_samp_combo$replications)
+[1] 115.66
+
+> print (average_time_samp_combo_tr2$elapsed/average_time_samp_combo_tr2$replications)
+[1] 114.82
+
+> sink()
+
+> source("GPsquareExponentialCov.r")
+
+> library("rbenchmark")
+
+> try_different_hypers <- function(trainx,trainy,trainx2,trainy2,testx,testy)
++ {
++   noise <-  runif(10,min=1,max=10)
++   gamma <- runif(10,min=0.1,m .... [TRUNCATED] 
+
+> # load the data
+> x <- training_data("train1x.txt")
+
+> y <- training_data("train1y.txt")
+
+> # load the data
+> x2 <- training_data("train2x.txt")
+
+> y2 <- training_data("train2y.txt")
+
+> testx <- training_data("testx.txt")
+
+> testy <- training_data("testy.txt")
+
+> x<-scale_data(x)
+
+> x2<-scale_data(x2)
+
+> testx <- scale_data(testx)
+
+> sink("samplingoutput10.txt",append=TRUE)

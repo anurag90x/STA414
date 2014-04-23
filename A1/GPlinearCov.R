@@ -72,7 +72,21 @@ find_square_error <- function(pred_y,test_y)
 # load the data
 training_1x <- training_data("train1x.txt")
 training_1y <- training_data("train1y.txt")
+
+
+
+training_2x <- training_data("train2x.txt")
+training_2y <- training_data("train2y.txt")
+
+
 testx <- training_data("testx.txt")
 testy <- training_data("testy.txt")
+
+
 pred_gpm_y <- gp_predict(training_1x,training_1y,testx,covf)
 sq_error_lingpm <- find_square_error(pred_gpm_y,testy)
+print(sq_error_lingpm)
+
+pred_gpm_y_tr2 <- gp_predict(training_2x,training_2y,testx,covf)
+sq_error_lingpm_tr2 <- find_square_error(pred_gpm_y_tr2,testy)
+print(sq_error_lingpm_tr2)

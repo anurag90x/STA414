@@ -1,0 +1,247 @@
+
+> source("GPsquareExponentialCov.r")
+
+> library("rbenchmark")
+
+> try_different_hypers <- function(trainx,trainy,trainx2,trainy2,testx,testy)
++ {
++   noise <-  runif(10,min=1,max=10)
++   gamma <- runif(10,min=0.1,m .... [TRUNCATED] 
+
+> # load the data
+> x <- training_data("train1x.txt")
+
+> y <- training_data("train1y.txt")
+
+> # load the data
+> x2 <- training_data("train2x.txt")
+
+> y2 <- training_data("train2y.txt")
+
+> testx <- training_data("testx.txt")
+
+> testy <- training_data("testy.txt")
+
+> x<-scale_data(x)
+
+> x2<-scale_data(x2)
+
+> testx <- scale_data(testx)
+
+> sink("crossvalidation.txt",append=TRUE)
+
+> # Test 2 - Cross validation error 
+> 
+> cat("\n SQUARE COV CV TR1\n")
+
+ SQUARE COV CV TR1
+
+> average_time_cv <- benchmark(replications = 0,cross_validation_set <- cross_validation(x,y,square_cov,c(3.836155,1.883457,9.242932)))
+ [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+Minimum square error : 0.2098824 
+ [1] 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50
+Minimum square error : 0.1587629 
+ [1] 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75
+Minimum square error : 0.128827 
+ [1]  76  77  78  79  80  81  82  83  84  85  86  87  88  89  90  91  92  93  94  95
+[21]  96  97  98  99 100
+Minimum square error : 0.3076385 
+ [1] 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120
+[21] 121 122 123 124 125
+Minimum square error : 0.13137 
+ [1] 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145
+[21] 146 147 148 149 150
+Minimum square error : 0.08760395 
+ [1] 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170
+[21] 171 172 173 174 175
+Minimum square error : 0.117153 
+ [1] 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195
+[21] 196 197 198 199 200
+Minimum square error : 0.2342827 
+ [1] 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220
+[21] 221 222 223 224 225
+Minimum square error : 0.2989078 
+ [1] 226 227 228 229 230 231 232 233 234 235 236 237 238 239 240 241 242 243 244 245
+[21] 246 247 248 249 250
+Minimum square error : 0.3364064 
+[1]   9.754036 246.839307   1.045909
+
+> cat("\n SQUARE COV CV TR2\n")
+
+ SQUARE COV CV TR2
+
+> average_time_cv_tr2 <- benchmark(replications = 0,cross_validation_set_tr2 <- cross_validation(x2,y2,square_cov,c(3.836155,1.883457,9.242932)))
+ [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+Minimum square error : 0.3510471 
+ [1] 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50
+Minimum square error : 0.3653055 
+ [1] 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75
+Minimum square error : 0.202016 
+ [1]  76  77  78  79  80  81  82  83  84  85  86  87  88  89  90  91  92  93  94  95
+[21]  96  97  98  99 100
+Minimum square error : 0.1144905 
+ [1] 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120
+[21] 121 122 123 124 125
+Minimum square error : 0.1854975 
+ [1] 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145
+[21] 146 147 148 149 150
+Minimum square error : 0.1711064 
+ [1] 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170
+[21] 171 172 173 174 175
+Minimum square error : 0.2786925 
+ [1] 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195
+[21] 196 197 198 199 200
+Minimum square error : 0.08263153 
+ [1] 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220
+[21] 221 222 223 224 225
+Minimum square error : 0.08286507 
+ [1] 226 227 228 229 230 231 232 233 234 235 236 237 238 239 240 241 242 243 244 245
+[21] 246 247 248 249 250
+Minimum square error : 0.1853661 
+[1] 0.1714397 4.1931471 1.2101390
+
+> cat("\n ABS COV CV TR1\n")
+
+ ABS COV CV TR1
+
+> average_time_cv_abs <- benchmark(replications = 0,cross_validation_abs <- cross_validation(x,y,absolute_cov,c(3.836155,1.883457,9.242932)))
+ [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+Minimum square error : 0.2242645 
+ [1] 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50
+Minimum square error : 0.1349758 
+ [1] 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75
+Minimum square error : 0.1654287 
+ [1]  76  77  78  79  80  81  82  83  84  85  86  87  88  89  90  91  92  93  94  95
+[21]  96  97  98  99 100
+Minimum square error : 0.2637148 
+ [1] 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120
+[21] 121 122 123 124 125
+Minimum square error : 0.1539336 
+ [1] 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145
+[21] 146 147 148 149 150
+Minimum square error : 0.1236536 
+ [1] 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170
+[21] 171 172 173 174 175
+Minimum square error : 0.1042902 
+ [1] 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195
+[21] 196 197 198 199 200
+Minimum square error : 0.2212253 
+ [1] 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220
+[21] 221 222 223 224 225
+Minimum square error : 0.3748731 
+ [1] 226 227 228 229 230 231 232 233 234 235 236 237 238 239 240 241 242 243 244 245
+[21] 246 247 248 249 250
+Minimum square error : 0.3375156 
+[1] 1.330321e+07 8.304367e+07 9.212394e-01
+
+> cat("\n ABS COV CV TR2\n")
+
+ ABS COV CV TR2
+
+> average_time_cv_abs_tr2 <- benchmark(replications = 0,cross_validation_abs_tr2 <- cross_validation(x2,y2,absolute_cov,c(3.836155,1.883457,9.242932)) .... [TRUNCATED] 
+ [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+Minimum square error : 0.4073217 
+ [1] 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50
+Minimum square error : 0.3788869 
+ [1] 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75
+Minimum square error : 0.2144853 
+ [1]  76  77  78  79  80  81  82  83  84  85  86  87  88  89  90  91  92  93  94  95
+[21]  96  97  98  99 100
+Minimum square error : 0.2573858 
+ [1] 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120
+[21] 121 122 123 124 125
+Minimum square error : 0.2123116 
+ [1] 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145
+[21] 146 147 148 149 150
+Minimum square error : 0.1774233 
+ [1] 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170
+[21] 171 172 173 174 175
+Minimum square error : 0.2600381 
+ [1] 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195
+[21] 196 197 198 199 200
+Minimum square error : 0.09904649 
+ [1] 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220
+[21] 221 222 223 224 225
+Minimum square error : 0.1195716 
+ [1] 226 227 228 229 230 231 232 233 234 235 236 237 238 239 240 241 242 243 244 245
+[21] 246 247 248 249 250
+Minimum square error : 0.2086731 
+[1] 2.508952e+07 1.190191e+08 6.937254e-01
+
+> cat("\n COMBO. COV CV TR1\n")
+
+ COMBO. COV CV TR1
+
+> average_time_cv_combined <- benchmark(replications = 0,cross_validation_combined <- cross_validation(x,y,combined_cov,c(3.836155,1.883457,2.5,9.2429 .... [TRUNCATED] 
+ [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+Minimum square error : 0.2098824 
+ [1] 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50
+Minimum square error : 0.13499 
+ [1] 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75
+Minimum square error : 0.1319542 
+ [1]  76  77  78  79  80  81  82  83  84  85  86  87  88  89  90  91  92  93  94  95
+[21]  96  97  98  99 100
+Minimum square error : 0.3004395 
+ [1] 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120
+[21] 121 122 123 124 125
+Minimum square error : 0.129769 
+ [1] 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145
+[21] 146 147 148 149 150
+Minimum square error : 0.087611 
+ [1] 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170
+[21] 171 172 173 174 175
+Minimum square error : 0.1022083 
+ [1] 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195
+[21] 196 197 198 199 200
+Minimum square error : 0.2250725 
+ [1] 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220
+[21] 221 222 223 224 225
+Minimum square error : 0.3410342 
+ [1] 226 227 228 229 230 231 232 233 234 235 236 237 238 239 240 241 242 243 244 245
+[21] 246 247 248 249 250
+Minimum square error : 0.3364098 
+[1]   7.3428375   1.5041820 204.4656878   0.8331724
+
+
+
+> cat("\n COMBO. COV CV TR2\n")
+
+ COMBO. COV CV TR2
+
+> average_time_cv_combined_tr2 <- benchmark(replications = 0,cross_validation_combined_tr2 <- cross_validation(x2,y2,combined_cov,c(3.836155,1.883457, .... [TRUNCATED] 
+ [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+Minimum square error : 0.3510367 
+ [1] 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50
+Minimum square error : 0.3787063 
+ [1] 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75
+Minimum square error : 0.2020271 
+ [1]  76  77  78  79  80  81  82  83  84  85  86  87  88  89  90  91  92  93  94  95
+[21]  96  97  98  99 100
+Minimum square error : 0.1144956 
+ [1] 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120
+[21] 121 122 123 124 125
+Minimum square error : 0.1855032 
+ [1] 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145
+[21] 146 147 148 149 150
+Minimum square error : 0.1747275 
+ [1] 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170
+[21] 171 172 173 174 175
+Minimum square error : 0.2600408 
+ [1] 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195
+[21] 196 197 198 199 200
+Minimum square error : 0.08263622 
+ [1] 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220
+[21] 221 222 223 224 225
+Minimum square error : 0.08286627 
+ [1] 226 227 228 229 230 231 232 233 234 235 236 237 238 239 240 241 242 243 244 245
+[21] 246 247 248 249 250
+Minimum square error : 0.2086654 
+[1] 6.367201e+07 2.985351e+08 9.563068e+06 1.025747e+00
+
+> '
++ cat("CROSS VALIDATION ERRORS \n")
++ print(average_time_cv$elapsed/average_time_cv$replications)
++ print (average_time_cv_tr2$elapsed/average_tim .... [TRUNCATED] 
+[1] "\ncat(\"CROSS VALIDATION ERRORS \n\")\nprint(average_time_cv$elapsed/average_time_cv$replications)\nprint (average_time_cv_tr2$elapsed/average_time_cv_tr2$replications)\nprint (average_time_cv_abs$elapsed/average_time_cv_abs$replications)\nprint (average_time_cv_abs_tr2$elapsed/average_time_cv_abs_tr2$replications)\nprint (average_time_cv_combined$elapsed/average_time_cv_combined$replications)\nprint (average_time_cv_combined_tr2$elapsed/average_time_cv_combined_tr2$replications)\n"
+
+> sink()

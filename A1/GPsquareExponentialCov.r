@@ -1,6 +1,6 @@
 # Script using the Gaussian process regression functions from wk6funcs.r.
 
-source("wk6funcs.r")
+source("helperFunctions.r")
 library("rbenchmark")
 training_data <- function(data)
 {
@@ -11,9 +11,7 @@ training_data <- function(data)
 }
 
 
-# Covariance function to use.  Takes a vector x1 (actually a scalar here)
-# and a matrix X2 (with only one column here) as arguments, and returns 
-# the vector of covariances of x1 with rows of X2.
+# Square covariance function
 
 square_cov <- function (x1,X2, h)
 {
@@ -30,6 +28,7 @@ square_cov <- function (x1,X2, h)
 
 }
 
+# Absolute covariance function
 
 absolute_cov<-function (x1,X2, h)
 {
@@ -46,12 +45,14 @@ absolute_cov<-function (x1,X2, h)
   return (result)
   
 }
+# Combined covariance function
 
 combined_cov<-function (x1,X2, h)
 {
-  gamma1 <- h[2]
-  gamma2 <- h[3]
-  rho <- h[4]
+  gamma1 <- h[2]  
+  rho <- h[3]
+  gamma2 <- h[4]
+  
   absResult <- matrix(NA,1,nrow(X2))
   squareResult <- matrix(NA,1,nrow(X2))
   difference <- t(t(X2)-x1)
@@ -85,13 +86,14 @@ cross_validation <- function(trainx,trainy,covf,hypers)
   hyperVals <- numeric(length(hypers))
   for (v in 1:10)
   {
-    cat("\nUsing cases",(v-1)*25+1,"to",v*25,"for validation set:\n")
+    #cat("\nUsing cases",(v-1)*25+1,"to",v*25,"for validation set:\n")
     val.ix = ((v-1)*25+1):(v*25)
     print(val.ix)
     hyper <- gp_try_hypers(trainx,trainy,val.ix,covf,hypers)
     hyperVals <- hyperVals+hyper
   }
   hypers <- hyperVals/10
+  print(hypers)
   hypers
     
 }
@@ -128,6 +130,7 @@ importance_sampling <-function(trainx,trainy,testx,testy,covf)
   
   noise_dist <- rnorm(num_samples,-1,1)
   gamma_dist <- rnorm(num_samples,0,1)
+  gamma_dist2 <- rnorm(num_samples,0,1)
   rho_dist <- rnorm(num_samples,0,1)
   num_tests <- nrow(testx)
   
@@ -141,7 +144,7 @@ importance_sampling <-function(trainx,trainy,testx,testy,covf)
     hypers[1] <- exp(noise_dist[j])
     hypers[2] <- exp(gamma_dist[j])
     hypers[3] <- exp(rho_dist[j])
-    hypers[4] <- exp(gamma_dist[j])
+    hypers[4] <- exp(gamma_dist2[j])
     likelihood[j] <- exp(gp_log_likelihood(trainx,trainy,covf, hypers))
     C <- gp_cov_matrix(trainx,covf,hypers)
    
@@ -161,7 +164,7 @@ importance_sampling <-function(trainx,trainy,testx,testy,covf)
       hypers[1] <- exp(noise_dist[j])
       hypers[2] <- exp(gamma_dist[j])
       hypers[3] <- exp(rho_dist[j])
-      hypers[4] <- exp(gamma_dist[j])
+      hypers[4] <- exp(gamma_dist2[j])
       
 
       predicted_y <- gp_predict_average (trainx, trainy, testx[i,],trFactor[j,],covf, hypers)
@@ -180,14 +183,4 @@ scale_data <- function(xvalues)
   xvalues
   
 }
-  
-  
-  
-  
 
-
-
-
-
-
-  
