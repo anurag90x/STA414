@@ -4,16 +4,13 @@ training_data <- function(data)
 {
  
   result <- read.table(data,head=FALSE)
- 
   return(as.matrix(result))
 }
 
 # funciton to fit the linear model
 fit_lm <- function(x_values,y_values)
 {
-  #model <-lm.fit(y_values~x_values[,1]+x_values[,2]+x_values[,3]+x_values[,4]+x_values[,5]+x_values[,6]+x_values[,7]+x_values[,8],data=censusinfo)
   model <-lm(y_values~x_values)  
-  #summary(model)
   return (coef(model))
 }
 
@@ -21,12 +18,10 @@ fit_lm <- function(x_values,y_values)
 find_square_error <- function(coeff,test_x,test_y)
 {
   error <- 0
-  
   end_ind <- ncol(test_x)+1
   for(j in 1:nrow(test_x))
   {
     pred_y <- coeff[2:end_ind] %*% test_x[j,]+coeff[1]
-    
     error <- (pred_y - test_y[j])^2+error
   }
   
@@ -58,13 +53,9 @@ print(sq_error)
 
 cat("Linear model -TRAINING SET 2\n")
 
-
-
 coeff_tr2 <- fit_lm(training_2x,training_2y)
 sq_error_tr2 <- find_square_error(coeff_tr2,testx,testy)
 print(sq_error_tr2)
-
-
 
 
 cat("Linear model SQUARE BASIS -TRAINING SET 1\n")
@@ -89,7 +80,6 @@ print(sq_error_sqbasis_tr2)
 
 cat("Linear model SQUARE AND CUBE BASIS -TRAINING SET 1\n")
 
-
 # cube basis functions
 cube_basis <- cbind(training_1x,training_1x^2,training_1x^3)
 coeff_cube <- fit_lm(cube_basis,training_1y)
@@ -98,10 +88,7 @@ cube_error_sqbasis <- find_square_error(coeff_cube,cube_testx,testy)
 print(cube_error_sqbasis)
 
 
-
 cat("Linear model SQUARE AND CUBE BASIS -TRAINING SET 2\n")
-
-
 
 cube_basis_tr2 <- cbind(training_2x,training_2x^2,training_2x^3)
 coeff_cube_tr2 <- fit_lm(cube_basis_tr2,training_2y)
