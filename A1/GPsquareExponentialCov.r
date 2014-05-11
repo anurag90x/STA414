@@ -6,7 +6,6 @@ training_data <- function(data)
 {
   
   result <- read.table(data,head=FALSE)
-  
   return(as.matrix(result))
 }
 
@@ -23,7 +22,6 @@ square_cov <- function (x1,X2, h)
   difference <- difference^2
   sqSums <- (rowSums(difference))*rho^2
   result<- 100^2 + gamma^2 * exp(-(sqSums))
- 
   return (result)
 
 }
@@ -40,8 +38,6 @@ absolute_cov<-function (x1,X2, h)
  
   absSums <- (rowSums(abs(difference)))*rho
   result<- 100^2 + gamma^2 * exp(-(absSums))
-  
-
   return (result)
   
 }
@@ -61,10 +57,9 @@ combined_cov<-function (x1,X2, h)
   absSums <- (rowSums(abs(difference)))*rho
   absResult<- 100^2 + gamma1^2 * exp(-(absSums))
   
-   difference <- difference^2
+  difference <- difference^2
   sqSums <- (rowSums(difference))*rho^2
   squareResult<- 100^2 + gamma2^2 * exp(-(sqSums))
- 
   
   return (absResult+squareResult)
   
@@ -77,7 +72,6 @@ find_square_error <- function(pred_y,test_y)
   rows <- nrow(test_y)
   error <- (pred_y-test_y)^2
   return (mean(error))
-  
   
 }
 
@@ -152,8 +146,7 @@ importance_sampling <-function(trainx,trainy,testx,testy,covf)
   }
   marginal <- rowSums(likelihood)
   print (marginal)
-  #CovMatrix <- gp_cov_matrix(trainx,covf,hypers)
-  
+
   for(i in 1:num_tests)
   {
     
