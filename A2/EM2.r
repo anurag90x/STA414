@@ -1,19 +1,12 @@
 # Functions file . Implements EM,loglikelihood, prediction and finding error
 # methods
 #
-#
-
-
-
-
 
 # Function to read the data from a file and return it as a matrix
 
 training_data <- function(data)
 {
-  
   result <- read.table(data,head=FALSE)
-  
   return(as.matrix(result))
 }
 
@@ -25,9 +18,7 @@ training_data <- function(data)
 set_initial_parameters <- function(trainx,trainy,alpha,K,num_components)
 {
   seedval <- runif(1,1,50)
-  
   # seed is a random value from the unif. dist.
-  
   set.seed(seedval)
  
   # Initialize the responsibility matrix at the beginning.
@@ -58,9 +49,7 @@ set_initial_parameters <- function(trainx,trainy,alpha,K,num_components)
   # Based on these first responsibilites, get an initial estimate of the parameters.
   
   param <- M_step(trainx,resp_matrix,alpha,num_components)
- 
  # Return this initial estimate
- 
   list("theta_matrix"=param$theta_matrix,"mixing_vector"=param$mixing_vector)
 }
 
@@ -73,44 +62,25 @@ runEM <- function(trainx,trainy,K,alpha,num_iters)
 {
   
   # These are the initial values of the parameters obtained by the first M step 
-  
-  
   num_components <- K*10 # K * number of classes
-  
   parameters <- set_initial_parameters(trainx,trainy,alpha,K,num_components)
-  
   # initial values of the parameters obtained by running the M step, the first time.
-  
   mixing_vec <- parameters$mixing_vector
-  
   theta_mat <- parameters$theta_matrix 
-  
- 
   for(i in 1:num_iters)
   {
-    #cat("Next iteration of EM.. \n")
-    
     calculateLogLikelihood(trainx,trainy,mixing_vec,theta_mat,alpha,K,num_components) # calculate log likelihood
-    
     resp_mat <- E_step(trainx,trainy,mixing_vec,theta_mat,K,num_components) # do for each training example
-    
     parameters <- M_step(trainx,resp_mat,alpha,num_components) # update the parameters
-    
     mixing_vec <- parameters$mixing_vector # get the mixing props.
-    
     theta_mat <- parameters$theta_matrix # get the theta values
   }
-  
- 
-  
-  
+
   # The maximum likelihood estimates of the parameters are returned
-  
   list("theta_matrix"=theta_mat,"mixing_vector"=mixing_vec,"resp_matrix"=resp_mat)
 }
 
 # Function to calculate the log likelihood for the data.
-
 
 calculateLogLikelihood <- function(trainx,trainy,mixing_vector,theta_matrix,alpha,K,num_components)
 {
@@ -119,13 +89,11 @@ calculateLogLikelihood <- function(trainx,trainy,mixing_vector,theta_matrix,alph
   for(i in 1:num_training)
   {
     label_value <- trainy[i] 
-    
     indices<- as.numeric(unlist(get_start_end(K,label_value)))
     start<-indices[1]
     end<-indices[2]
     
     # relevant mixing prop. values
-    
     mixing_values_vec <- mixing_vector[start:end]
     joint_prob <-0
   
@@ -138,7 +106,6 @@ calculateLogLikelihood <- function(trainx,trainy,mixing_vector,theta_matrix,alph
       
     }
     log_likelihood <- log_likelihood + log(joint_prob)
-    
     
   }
   penalty <- calculatePenalty(alpha,theta_matrix)
@@ -156,10 +123,8 @@ calculatePenalty <- function(alpha,theta_matrix)
 {
   log_theta <- log(theta_matrix)
   log_alt_theta <- log(1-theta_matrix)
-  
   penalty <- alpha*(sum(log_theta)+sum(log_alt_theta))
   return (penalty)
-  
   
   
 }
@@ -183,7 +148,6 @@ E_step <- function(trainx,trainy,mixing_vector,theta_matrix,K,num_components)
     label <- trainy[i]
     
     # the starting and ending indices corres. to the label specified
-    
     indices<- as.numeric(unlist(get_start_end(K,label)))
     start<-indices[1]
     end<-indices[2]
@@ -197,21 +161,15 @@ E_step <- function(trainx,trainy,mixing_vector,theta_matrix,K,num_components)
       alt_theta_vec <- 1-theta_vec
       
       # the product of all the 196 sets of (theta(k,j))^x(i,j) * (1-theta(k,j))^(1-x(i,j))
-      
       feature_product <- prod((theta_vec^trainx[i,])*(alt_theta_vec^(1-trainx[i,])))
-      
       resp_matrix[i,start+k] <- mixing_values_vec[k+1]*feature_product
      
-      
-    
-      
+   
     }
     # update the correct range in the responsibility matrix
-    
     resp_matrix[i,] <-  (resp_matrix[i,])/sum(resp_matrix[i,])
     
   }
-  
   return (resp_matrix)
   
   
@@ -227,9 +185,6 @@ M_step<-function(trainx,resp_matrix,alpha,num_components)
  theta_mat <- update_thetas(trainx,resp_matrix,alpha,num_components)
  list("theta_matrix"=theta_mat,"mixing_vector"=mixing_vec)
 }
-
-
-
 
 # Function to update the mixing proportions of each component
 # This is computed using the same concept as in gaussian mixture
@@ -254,7 +209,6 @@ update_mixing_prop <- function(trainx,resp_matrix)
 update_thetas <- function(trainx,resp_matrix,alpha,num_components)
 {
   transpose_train <- t(trainx)  # 196x800 matrix
-  
   theta_matrix <- matrix(0,num_components,ncol(trainx))
   for (k in 1:num_components)
   {
@@ -301,11 +255,9 @@ predictClass<-function(testx,mixing_vector,theta_matrix,num_components)
       prob <- prob + mixing_vector[k]*feature_product #marginal, across all components
     }
     # find the resp. by dividing by the marginal
-    
     predictive_resp_mat[i,]<- predictive_resp_mat[i,]/sum( predictive_resp_mat[i,])
     
     #each row of class_prob contains the total prob for each of the 10 classes
-    
     class_prob[i,]<-unname(tapply( predictive_resp_mat[i,], (seq_along(predictive_resp_mat[i,])-1) %/% (num_components/num_classes), sum))
   }
   # class probability matrix
