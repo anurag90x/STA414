@@ -12,19 +12,13 @@
 gp_cov_matrix <- function (x_train, covf, hypers)
 {
   n <- nrow(x_train)
-  
   C <- matrix(NA,n,n)
   #C <- covf(x_train,x_train,hypers)
   for (i in 1:n)
   {
     C[i,] <-covf(x_train[i,],x_train,hypers)
   }
-   
-  
-  
-  #print(dim(C))
   diag(C) <- diag(C) + hypers[1]^2
-  
   C
 }
 
@@ -42,13 +36,11 @@ gp_predict <- function (x_train, y_train, x_test, covf, hypers)
   
   C <- gp_cov_matrix(x_train,covf,hypers)
   b <- solve(C,y_train)
-  #print(dim(b))
   r <- numeric(nrow(x_test))
   k <- matrix(NA,1,nrow(x_train))
   for (i in 1:nrow(x_test))
   { 
     k<-covf(x_test[i,],x_train,hypers)#250 element vector
-   
     r[i] <- k %*% b
   }
   
@@ -59,14 +51,9 @@ gp_predict <- function (x_train, y_train, x_test, covf, hypers)
 gp_predict_average <- function (x_train, y_train, x_test,trFactor,covf, hypers)
 {
   n <- nrow(x_train)
- 
   k <- matrix(NA,1,nrow(x_train))
-   
   k<-covf(x_test,x_train,hypers)#250 element vector
-  
   r<- k %*% trFactor
-  
-  
   return (r)
 }
 
@@ -81,12 +68,8 @@ gp_predict_average <- function (x_train, y_train, x_test,trFactor,covf, hypers)
 gp_log_likelihood <- function (x_train, y_train, covf, hypers)
 {
   n <- nrow(x_train)
-  
   C <- gp_cov_matrix(x_train,covf,hypers)
-  #print (dim(C))
   b <- solve(C,y_train)
- 
-  #print (t(y_train)%*%b/2)
   - (n/2)*log(2*pi) - determinant(C)$modulus/2 - (t(y_train) %*% b)/2
 }
 
