@@ -29,7 +29,6 @@ averagePrediction<-function(testx,trainx,trainy,alpha,K,num_iters)
   pred_y <- matrix(NA,num_tests,1)
   error_vector <- matrix(NA,num_trials,1)
   
-  
   for(i in 1:num_trials)
   {
     
@@ -37,21 +36,18 @@ averagePrediction<-function(testx,trainx,trainy,alpha,K,num_iters)
     # add all the class probability matrices
     trial_class_prob <- predictClass(testx,mle_params$mixing_vector,mle_params$theta_matrix,num_components)
     class_prob <- class_prob+trial_class_prob
-    
     error_vector[i] <- make_prediction(trial_class_prob,testy)
     
   }
   # average it out
   class_prob <- class_prob/num_trials
   # predict based on which has the highest probability
-  
   for(i in 1:num_tests)
   {
     max_class <- (which.max(class_prob[i,])-1)
     # because R indices start from 1. If max_class is 1 then the answer is 0 really
     pred_y[i] <-max_class
   }
-  
   # error for each of 10 runs
   print(error_vector)
   return(pred_y)
