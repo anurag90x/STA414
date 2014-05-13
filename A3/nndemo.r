@@ -5,12 +5,11 @@ source("pca.r")
 # absolute values of weights over training run.
 training_data <- function(data)
 {
-  
   result <- read.table(data,head=FALSE)
-  
   return(as.matrix(result))
 }
 
+# Function to find the prediction error
 
 find_pred_error <- function(class_pred,valy)
 {
@@ -25,19 +24,21 @@ find_pred_error <- function(class_pred,valy)
   return (error/length(valy))
 }
 
+# Function to output the values for test cases
+
 find_test_classes <- function(testx,weights,skel,testy)
 {
-  wl <- relist(weights,skel)
-  lin_basis <- mlp_forward(testx,wl)
-  log_ll <- find_log_likelihood(lin_basis$o,testy,0,wl) 
+  wl <- relist(weights,skel)  # get the "learned weights"
+  lin_basis <- mlp_forward(testx,wl)  # feed forward with the test case and those weights
+  log_ll <- find_log_likelihood(lin_basis$o,testy,0,wl)   # find log ll
   cat("Log probability of test set \n")
-  print(log_ll/length(testy))
-  test_pred <- round(1/(1+exp(-1*lin_basis$o)))
+  print(log_ll/length(testy)) # average log ll
+  test_pred <- round(1/(1+exp(-1*lin_basis$o))) # prediction
   return (test_pred)
   
 }
 
-
+# Function to try out different number of principal components
 
 try_different_components<- function()
 {
@@ -59,31 +60,21 @@ try_different_components<- function()
     trnx_val_proj <- pca.proj(eigenvec_est,trnx_val)
     
     tstx_proj <- pca.proj(eigenvec_est,tstx)
-    
     skel <- mlp_skeleton(pca[i],m)
-    
     # setting a seed value
     set.seed(200)
-    
-    
     iters <- c(1:max_iters)
     fit <- mlp_train (trny_est,trnx_est_proj,trnx_val_proj,trny_val, m, 0.001, length(iters),lambda)
-    
     est_ll_mat <- fit$E
     val_ll_mat <- fit$E_val
-    
     min_index <- which.min(fit$E_val) # Min. minus log ll for validation
-    
+    # print the validation test minus log likelihood
     print (fit$E_val[min_index])
     
     fwval_best <- fit$P_val[min_index,]
     predictions <- round(1/(1+exp(-fwval_best)))
-    
-   
+    # predict the values for test cases
     test_pred<- find_test_classes(tstx_proj,fit$W[min_index,],skel,tsty)   
-    
-    
-  
     error[i] <- find_pred_error(predictions,trny_val)
     test_error[i] <- find_pred_error(test_pred,tsty)
     
@@ -98,7 +89,6 @@ try_different_components<- function()
 trnx <- training_data("a3trnx.txt")
 trny <- training_data("a3trny.txt")
 
-
 tstx <- training_data("a3tstx.txt")
 tsty <- training_data("a3tsty.txt")
 
@@ -107,20 +97,14 @@ trnx_val <- trnx[1001:1300,]
 trny_est <- trny[1:1000]
 trny_val <- trny[1001:1300]
 
-
 m <- 10 #number of hidden units
 eta <- 0.001
 pca <- c(40)
 iters <- 400
 
-
 eigenvec_est <- pca.vectors(trnx_est,40)
 trnx_est_proj <- pca.proj(eigenvec_est,trnx_est)
-
-#trnx_val_proj <- pca.proj(eigenvec_est,trnx_val)
-
 log_ll_mats <- try_different_components()
-#mlp <- mlp_train_checkgrad(trny_est, trnx_est_proj, m, eta, iters,0.01)
-  
+
 
 
