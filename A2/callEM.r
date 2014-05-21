@@ -20,7 +20,7 @@ show_digit <- function (im)
 averagePrediction<-function(testx,trainx,trainy,alpha,K,num_iters)
 {
   # seed values obtained from a uniform dist.
-  num_trials <- 1
+  num_trials <- 1 # number of trials to average the predictions across
   num_tests <- nrow(testx)
   num_classes <- 10
   
@@ -71,3 +71,5 @@ alpha <- 0.05
 pred_classes <- averagePrediction(testx,trainx,trainy,alpha,K,num_iters)
 #sink()
 error <- find_error (pred_classes,testy)
+cat("Average prediction error ")
+print (error)
