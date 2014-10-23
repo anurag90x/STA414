@@ -1,4 +1,4 @@
-The assignment details are outlined in the pdf.
+The assignment details are outlined in the pdf
 
 To run EM on the dataset use callEM.r. This file contains information to change the number of components to be used as well as the number of iterations to run EM and the number of trials(in case of averaging predictions across multiple EM runs)
 
